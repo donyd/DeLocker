@@ -7,7 +7,7 @@
     tools:context="com.unscripted.www.delocker.MainActivity">
 
     <Button
-        android:id="@+id/btn_delock"
+        android:id="@+id/button"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
