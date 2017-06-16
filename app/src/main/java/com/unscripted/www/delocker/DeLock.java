@@ -19,11 +19,19 @@ public class DeLock extends AppCompatActivity {
 
     }
 
-    private int[] createRange(){
-        int[] combinations = new int[1000];
+    private String[] createRange(){
+        // Create an array to hold all combination possiblities
+        String[] combinations = new String[1000];
 
-        for (int i = 0; i < 1000; i++){
-            combinations[i] = i;
+        // Populate array with numerical representations from 000-999
+        for (int i = 0; i < combinations.length; i++){
+            if (i < 10) {
+                combinations[i] = "00" + Integer.toString(i);
+            } else if (i < 100){
+                combinations[i] = "0" + Integer.toString(i);
+            } else {
+                combinations[i] = Integer.toString(i);
+            }
         }
 
         System.out.println(Arrays.toString(combinations));
