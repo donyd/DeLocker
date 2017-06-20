@@ -11,7 +11,9 @@ import java.util.Random;
 
 public class DeLock extends AppCompatActivity {
 
-    private int[] combinations;
+    private String temp;
+    private char[] currentCombo = new char[3];
+    private String[] combinations;
 
 
 
@@ -24,23 +26,19 @@ public class DeLock extends AppCompatActivity {
         final TextView mTxtViewTWO = (TextView) findViewById(R.id.textView2);
         final TextView mTxtViewTHREE = (TextView) findViewById(R.id.textView3);
 
+        combinations = createRange();
+        temp = combinations[Randomizer()];
+        currentCombo = digitSeparator(temp);
 
         mBtnGenerate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-
-                String[] currentCombinations = createRange();
-
-                mTxtViewONE.setText(currentCombinations[Randomizer()]);
-                mTxtViewTWO.setText(currentCombinations[Randomizer()]);
-                mTxtViewTHREE.setText(currentCombinations[Randomizer()]);
-
-
-
+                mTxtViewONE.setText("");
+                mTxtViewTWO.setText("");
+                mTxtViewTHREE.setText("");
             }
         });
-
 
     }
 
@@ -59,14 +57,22 @@ public class DeLock extends AppCompatActivity {
             }
         }
 
-        System.out.println(Arrays.toString(combinations));
+        // System.out.println(Arrays.toString(combinations));
         return combinations;
     }
 
     private int Randomizer(){
         Random randomizer = new Random();
-        int searchNum =  randomizer.nextInt(1000) + 1;
+        int searchNum =  randomizer.nextInt(1000);
         return searchNum;
+    }
+
+    private char[] digitSeparator(String combination){
+        char[] result = new char[3];
+        for(int i = 0; i < combination.length(); i++){
+            result[i] = combination.charAt(i);
+        }
+        return result;
     }
 
 
