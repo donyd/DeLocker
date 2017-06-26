@@ -11,39 +11,39 @@
         android:id="@+id/textView"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="92dp"
-        android:layout_marginStart="92dp"
-        android:text="0"
-        android:textSize="48sp"
+
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/textView2"
         android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="48sp" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:text="0"
-        android:textAppearance="?android:textAppearanceLarge"
         android:layout_alignTop="@+id/textView3"
-        android:textSize = "48sp"
-        android:gravity="center"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:text="0"
+        android:textAlignment="center"
+
+        android:textSize="48sp" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"
-        android:text="0"
-        android:textSize="48sp"
-        android:gravity="center"
+        android:layout_centerVertical="true"
+
         android:layout_toEndOf="@+id/textView2"
         android:layout_toRightOf="@+id/textView2"
-        android:layout_centerVertical="true"/>
+        android:gravity="center"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="48sp" />
 
     <Button
         android:id="@+id/btn_generateCombo"
@@ -64,7 +64,9 @@
         android:layout_alignRight="@+id/textView3"
         android:layout_alignStart="@+id/textView"
         android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textSize="32sp" />
 </RelativeLayout>
