@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -15,8 +16,8 @@ public class DeLock extends AppCompatActivity {
     char[] currentCombo = new char[3];
     String firstNum, secondNum, thirdNum;
     char firstChar, secondChar, thirdChar;
-    String temp;
-    String[] combinations;
+    String[] shortset;
+    ArrayList<String> combinations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,20 +28,24 @@ public class DeLock extends AppCompatActivity {
         final TextView mTxtViewONE = (TextView) findViewById(R.id.textView);
         final TextView mTxtViewTWO = (TextView) findViewById(R.id.textView2);
         final TextView mTxtViewTHREE = (TextView) findViewById(R.id.textView3);
-        final TextView mTxtViewWholeDisplay = (TextView) findViewById(R.id.txtWholeDisplay);
+        final TextView mTxtViewWholeDisplay1 = (TextView) findViewById(R.id.txtWhlDisp1);
+        final TextView mTxtViewWholeDisplay2 = (TextView) findViewById(R.id.txtWhlDisp2);
+        final TextView mTxtViewWholeDisplay3 = (TextView) findViewById(R.id.txtWhlDisp3);
+        final TextView mTxtViewWholeDisplay4 = (TextView) findViewById(R.id.txtWhlDisp4);
+        final TextView mTxtViewWholeDisplay5 = (TextView) findViewById(R.id.txtWhlDisp5);
+        final TextView mTxtViewWholeDisplay6 = (TextView) findViewById(R.id.txtWhlDisp6);
+        final TextView mTxtViewWholeDisplay7 = (TextView) findViewById(R.id.txtWhlDisp7);
+        final TextView mTxtViewWholeDisplay8 = (TextView) findViewById(R.id.txtWhlDisp8);
+        final TextView mTxtViewWholeDisplay9 = (TextView) findViewById(R.id.txtWhlDisp9);
 
-
-//        firstNum = Integer.toString(currentCombo[0]);
-//        secondNum = Integer.toString(currentCombo[1]);
-//        thirdNum = Integer.toString(currentCombo[2]);
 
         mBtnGenerate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                combinations = createRange();
-                temp = combinations[Randomizer()];
-                currentCombo = digitSeparator(temp);
+                combinations = DeLockHelper.createCombinations();
+                shortset = DeLockHelper.getShortCombo(combinations);
+                currentCombo = DeLockHelper.digitSeparator(shortset[0]);
 
                 firstChar = currentCombo[0];
                 secondChar = currentCombo[1];
@@ -54,47 +59,20 @@ public class DeLock extends AppCompatActivity {
                 mTxtViewONE.setText(firstNum);
                 mTxtViewTWO.setText(secondNum);
                 mTxtViewTHREE.setText(thirdNum);
+                mTxtViewWholeDisplay1.setText(shortset[1]);
+                mTxtViewWholeDisplay2.setText(shortset[2]);
+                mTxtViewWholeDisplay3.setText(shortset[3]);
+                mTxtViewWholeDisplay4.setText(shortset[4]);
+                mTxtViewWholeDisplay5.setText(shortset[5]);
+                mTxtViewWholeDisplay6.setText(shortset[6]);
+                mTxtViewWholeDisplay7.setText(shortset[7]);
+                mTxtViewWholeDisplay8.setText(shortset[8]);
+                mTxtViewWholeDisplay9.setText(shortset[9]);
 
             }
         });
 
 
-
     }
-
-    protected String[] createRange(){
-        // Create an array to hold all combination possibilities
-        String[] combinations = new String[1000];
-
-        // Populate array with numerical representations from 000-999
-        for (int i = 0; i < combinations.length; i++){
-            if (i < 10) {
-                combinations[i] = "00" + Integer.toString(i);
-            } else if (i < 100){
-                combinations[i] = "0" + Integer.toString(i);
-            } else {
-                combinations[i] = Integer.toString(i);
-            }
-        }
-
-        // System.out.println(Arrays.toString(combinations));
-        return combinations;
-    }
-
-    protected static int Randomizer(){
-        Random randomizer = new Random();
-        int searchNum =  randomizer.nextInt(1000);
-        return searchNum;
-    }
-
-    protected static char[] digitSeparator(String combination){
-        char[] result = new char[3];
-        for(int i = 0; i < combination.length(); i++){
-            result[i] = combination.charAt(i);
-        }
-        return result;
-    }
-
-
 
 }
