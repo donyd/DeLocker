@@ -11,7 +11,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
+
 public class DeLock extends AppCompatActivity {
+
+    private final static String LOG_TAG = AppCompatActivity.class.getSimpleName();
 
     char[] currentCombo = new char[3];
     String firstNum, secondNum, thirdNum;
@@ -38,12 +41,13 @@ public class DeLock extends AppCompatActivity {
         final TextView mTxtViewWholeDisplay8 = (TextView) findViewById(R.id.txtWhlDisp8);
         final TextView mTxtViewWholeDisplay9 = (TextView) findViewById(R.id.txtWhlDisp9);
 
+        combinations = DeLockHelper.createCombinations();
 
         mBtnGenerate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                combinations = DeLockHelper.createCombinations();
+
                 shortset = DeLockHelper.getShortCombo(combinations);
                 currentCombo = DeLockHelper.digitSeparator(shortset[0]);
 
