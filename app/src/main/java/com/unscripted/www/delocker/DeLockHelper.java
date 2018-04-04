@@ -35,7 +35,7 @@ public final class DeLockHelper {
         Random randomizer = new Random();
 
         int randElement = randomizer.nextInt(limit);
-        Log.d(LOG_TAG, "Current index size is " + limit + "\nReturn element " + randElement);
+        Log.d(LOG_TAG, "Current index size is " + limit + "\nReturned index element is " + randElement);
         return randElement;
     } // eof
 
@@ -60,16 +60,33 @@ public final class DeLockHelper {
 //        return shortList;
 //    } // eof - very highly redundant code, remove after verification
 
-    public static String[] getShortCombo(ArrayList<String> list){
+    public static String[] getShortCombo(ArrayList<String> list) {
         String[] shortset = new String[10];
-        for(int i = 0; i < 10; i++){
-            int a = Randomizer(COMBINATION_LIMIT);
-            shortset[i] = Integer.toString(a);
-            Log.d(LOG_TAG, "Current shortset list item is " + shortset[i]);
-            COMBINATION_LIMIT -= 1;
+        if (COMBINATION_LIMIT > 0) {
+            for (int i = 0; i < 10; i++) {
+                int a = Randomizer(COMBINATION_LIMIT);
+                shortset[i] = list.remove(a);
+                Log.d(LOG_TAG, "Current shortset list item removed from list is " + shortset[i] + "\n--------------------");
+
+                COMBINATION_LIMIT -= 1;
+            }
+        } else {
+            for (int i = 0; i < 10; i++) {
+                shortset[i] = "000";
+            }
+
         }
         return shortset;
     }
 
+    public static ArrayList<String> showList(ArrayList<String> list){
+        ArrayList<String> listElements = new ArrayList<String>();
+
+        for(String p: list){
+            listElements.add(p);
+        }
+
+        return listElements;
+    }
 
 }

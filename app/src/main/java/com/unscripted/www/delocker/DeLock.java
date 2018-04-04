@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
+import static com.unscripted.www.delocker.DeLockHelper.showList;
+
 
 public class DeLock extends AppCompatActivity {
 
@@ -72,6 +74,8 @@ public class DeLock extends AppCompatActivity {
                 mTxtViewWholeDisplay7.setText(shortset[7]);
                 mTxtViewWholeDisplay8.setText(shortset[8]);
                 mTxtViewWholeDisplay9.setText(shortset[9]);
+
+                Log.d(LOG_TAG, "Current list elements\n" + showList(combinations));
 
             }
         });
